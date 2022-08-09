@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <div class="login">
+    <div class="register">
       <div class="title">
-        <span>账号登录</span>
+        <span>欢迎注册</span>
       </div>
       <div class="form">
         <el-form size="large" :model="form" class="demo-form-inline">
           <el-form-item>
-            <el-input v-model="form.account" placeholder="邮箱账号或手机号码" />
+            <el-input v-model="form.email" placeholder="邮箱地址" />
           </el-form-item>
           <el-form-item>
             <el-input
@@ -17,35 +17,24 @@
             />
           </el-form-item>
           <el-form-item>
-            <el-checkbox v-model="form.freeLogin" label="7天免登录" />
+            <el-input v-model="form.phone" placeholder="手机号码" />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="login">登录</el-button>
+            <el-button type="primary" @click="login">立即注册</el-button>
           </el-form-item>
         </el-form>
-        <div class="link">
-          <el-link type="info">忘记密码</el-link>
-          <span></span>
-          <router-link
-            target="_blank"
-            style="text-decoration: none"
-            to="/register"
-          >
-            <el-link type="info">注册新账号</el-link>
-          </router-link>
-        </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import { reactive } from "vue";
 export default {
-  name: "HomeView",
+  name: "RegisterView",
   setup() {
     const form = reactive({
-      account: "",
+      email: "",
+      phone: "",
       password: "",
       freeLogin: false,
     });
@@ -59,19 +48,27 @@ export default {
 </script>
 <style lang="less" scoped>
 .home {
-  width: 100%;
-  height: 100%;
-  background: url("../assets/img/bac.png") no-repeat center top;
-  background-size: 100% 100%;
-  overflow: hidden;
-  .login {
-    position: fixed;
-    left: 60%;
-    top: 25%;
-    width: 6.7rem;
-    height: 8rem;
-    background-color: white;
-    border-radius: 0.2rem;
+  background: #fff;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 1100px;
+  background: url("../assets/img/register-bac.png");
+  background-size: 1920px 465px;
+  background-position: 0 200%;
+  background-color: #eff8ff;
+  background-repeat: no-repeat;
+  min-width: 1200px;
+  .register {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10rem;
+    height: 10rem;
     .title {
       width: 100%;
       height: 20%;
@@ -98,24 +95,25 @@ export default {
       }
     }
   }
-  //elementui样式修改
-  .el-input--large {
-    height: 0.8rem;
-    /deep/.el-input__inner {
-      font-size: 0.3rem;
-    }
-  }
-  .el-button--large {
-    width: 100%;
-    height: 0.8rem;
-  }
-  .el-checkbox--large {
-    /deep/.el-checkbox__label {
-      font-size: 0.3rem;
-    }
-  }
-  .el-link--info {
+}
+//elementui样式修改
+.el-input--large {
+  height: 1rem;
+  margin-bottom: 0.2rem;
+  /deep/.el-input__inner {
     font-size: 0.3rem;
   }
+}
+.el-button--large {
+  width: 100%;
+  height: 0.8rem;
+}
+.el-checkbox--large {
+  /deep/.el-checkbox__label {
+    font-size: 0.3rem;
+  }
+}
+.el-link--info {
+  font-size: 0.3rem;
 }
 </style>
